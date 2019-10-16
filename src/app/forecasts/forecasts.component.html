@@ -1,0 +1,16 @@
+<div *ngIf=fiveDayForcasts class="fourcastsContainer" >
+    <mat-card *ngFor="let day of fiveDayForcasts.DailyForecasts" class="fourcastsCard">
+        <mat-card-title>{{getDay(day.Date) | date:'EEEE'}}</mat-card-title>
+
+        <h4><img src="/assets/icons/{{day.Day.Icon}}-s.png"
+            class="weatherIcon">{{day.Temperature.Maximum[changeTempUnit$ | async].Value}}&#176;
+            <sup class="unit">{{day.Temperature.Maximum[changeTempUnit$ | async].Unit}}</sup>
+        -
+             <img src="/assets/icons/{{day.Night.Icon}}-s.png" class="weatherIcon">
+            {{day.Temperature.Minimum[changeTempUnit$ | async].Value}}&#176;
+            <sup class="unit">{{day.Temperature.Minimum[changeTempUnit$ | async].Unit}}</sup>
+        </h4>
+        <mat-card-content><h5>Day:</h5> {{day.Day.IconPhrase}}</mat-card-content>
+        <mat-card-content><h5>Night:</h5> {{day.Night.IconPhrase}}</mat-card-content>
+    </mat-card>
+</div>

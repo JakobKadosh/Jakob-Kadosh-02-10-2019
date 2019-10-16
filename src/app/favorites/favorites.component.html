@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="favoritesCardsContainer">
+        <mat-spinner *ngIf="isLaoding" class="spinner"></mat-spinner>
+        <h2 *ngIf="!favoriteCitiesKeys">No favorite cities yet..</h2>
+        <mat-card *ngFor="let city of favoriteCities" class="favorite-card" > 
+            <img mat-card-image src="{{city.imageUrl}}" class="cityPic" />
+            <mat-card-title>{{city.LocalizedName}}, {{city.Country.LocalizedName}} </mat-card-title>
+            <mat-card-actions><button mat-raised-button (click)="showCurrentConditions(city.Key)">Open</button> </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

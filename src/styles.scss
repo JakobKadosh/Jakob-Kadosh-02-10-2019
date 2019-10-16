@@ -1,1 +1,100 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/theming";
+
+@include mat-core();
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-pink, A200, A100, A400);
+$warn: mat-palette($mat-red);
+
+$theme: mat-light-theme($primary, $accent);
+@include angular-material-theme($theme);
+$mat-gt-sm: "screen and (min-width: 960px)";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.flex-spacer {
+  flex: 1 1 auto;
+}
+.container {
+  margin: 15px;
+}
+.fourcastsContainer,
+.favoritesCardsContainer {
+  margin: 1rem;
+  margin-top: 15px;
+  @media #{$mat-gt-sm} {
+    box-sizing: border-box;
+    margin: 1rem auto;
+    display: flex;
+    width: 1200px;
+  }
+}
+.flex-spacer {
+  flex: 1 1 auto;
+}
+.fourcastsCard,
+.favorite-card {
+  margin: 4px;
+  @media #{$mat-gt-sm} {
+    display: block;
+    max-width: 240px;
+    flex: 1;
+  }
+  img.weatherIcon {
+    vertical-align: middle;
+    max-width: 48px;
+  }
+}
+.autocomplete-wrapper.mat-form-field {
+  background-color: #f0f0f0;
+  display: block;
+  padding: 1rem 0;
+  .mat-form-field-wrapper {
+    margin: 0 auto;
+    max-width: 200px;
+  }
+}
+
+.current-conditions-card {
+  margin: 1rem 1rem;
+
+  @media #{$mat-gt-sm} {
+    max-width: 400px;
+
+    box-sizing: border-box;
+    margin: 1rem auto;
+    min-width: 200px;
+  }
+  img.weatherIcon {
+    vertical-align: middle;
+  }
+}
+
+.errorMsg {
+  text-align: center;
+}
+.errorImg,
+.spinner {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+sup.unit {
+  font-size: 10px;
+  &.big-unit{
+    font-size:12px;
+  }
+}
+
+.spinner {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

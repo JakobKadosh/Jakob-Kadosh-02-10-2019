@@ -1,0 +1,26 @@
+<div class="container">
+
+    <span class="flex-spacer"></span>
+    <mat-slide-toggle (click)="changeTempSystem()" color="primary">{{changeTempUnit$ | async}}</mat-slide-toggle>
+    <mat-form-field class="autocomplete-wrapper">
+        <input matInput placeholder="Search" aria-label="State" [matAutocomplete]="city"
+            [formControl]="searchCitiesCtrl">
+        <mat-autocomplete autoActiveFirstOption #city="matAutocomplete" [displayWith]="displayFn"
+            (optionSelected)="onHumanSelected($event.option)">
+            <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
+            <ng-container *ngIf="!isLoading">
+                <mat-option *ngFor="let city of filteredCities" [value]="city">
+
+                    <span><b>{{city.LocalizedName}} , {{city.Country.LocalizedName}}</b></span>
+                </mat-option>
+            </ng-container>
+        </mat-autocomplete>
+    </mat-form-field>
+
+
+    <ng-container *ngIf="errorMsg; else elseTemplate">
+        {{errorMsg}}
+    </ng-container>
+
+</div>
+<app-weather></app-weather>
